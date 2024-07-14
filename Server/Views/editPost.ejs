@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../Partials/header")%>
+<body>
+    <%- include("../Partials/nav")%>
+    <h1 class="text-center">This is the post page</h1>
+     <!-- Form -->
+     <form action="/user/addpost/edit/<%= post.id%>" method="post" class="col-4">
+        <fieldset>
+          <legend>Create a new blog.</legend>
+          <input value="<%=post.id%>" class="" name="id">
+          <div class="mb-3">
+            <label for="title" class="form-label">Blog Title</label>
+            <input value="<%=post.title%>" name="title" type="text" id="title" class="form-control border-black border-2" placeholder="What is the title of your blog?">
+          </div>
+          <div class="mb-3">
+            <label for="snippet" class="form-label">Snippet</label>
+            <input value="<%=post.snippet%>" name="snippet" id="snippet" class="form-control border-black border-2" placeholder="Write the snippet.">
+          </div>
+          <div class="mb-3">
+            <textarea name="blogtext" id="blogtext" rows="5" cols="50"><%=post.blogtext%></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Create</button>
+        </fieldset>
+      </form>
+</body>
+</html>

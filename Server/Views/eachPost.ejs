@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../Partials/header")%>
+<body>
+    <%- include("../Partials/nav")%>
+    <h1 class="text-center">This is the main page</h1>
+    <h2>Your Post <span><a href="/user/">Back</a></span></h2> 
+             <h3><%= post.title%></h3>
+             <p class="lead"><%= post.snippet%></p>
+             <p><%= post.blogtext%></p>
+             <a class="btn btn-info" href="/user/addpost/edit/<%=post.id%>">Edit Post</a>
+             <a class="btn btn-danger" href="/user/addpost/delete/<%=post.id%>">Delete Post</a>
+</body>
+</html>

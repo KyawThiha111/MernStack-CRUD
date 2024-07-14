@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../Partials/header")%>
+<body>
+    <%- include("../Partials/nav")%>
+    <h1 class="text-center">This is the main page</h1>
+    <h2>Your Posts <span><a href="/user/addpost">Add new post</a></span></h2>
+    <%if(Blogs.length>0){%>
+        <%Blogs.forEach(blog=>{%>
+           <div class="container-lg mx-auto">
+             <div class="col-6 mx-auto border-black border px-3 py-2">
+             <h3><%= blog.title%></h3>
+             <p class="lead"><%= blog.snippet%><span class="ms-2 h5">........</span></p>
+             <a href="/user/addpost/<%= blog.id%>">See More</a>
+             </div>
+           </div>
+        <%})%>
+    <%}else{%>
+         <div>No Posts</div>
+    <%}%>
+</body>
+</html>
