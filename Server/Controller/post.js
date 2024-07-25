@@ -1,8 +1,9 @@
 const Blogs = require("../Model/post");
 
 exports.mainRoute = ((req,res)=>{
-    Blogs.find().then(result=>{
-        res.render("main",{title:"Main Page", Blogs:result})
+    Blogs.find().sort({createdAt: -1}).populate("userid","username").then(result=>{
+        res.render("main",{title:"Main Page", Blogs:result});
+        console.log(result)
     }).catch(err=>{
         console.log(err)
     })
@@ -22,7 +23,7 @@ exports.addPostRouteRedirect = ((req,res)=>{
 
 exports.addPostPostRoute = ((req,res)=>{
     const {title,snippet,blogtext} = req.body;
-    Blogs.create({title,snippet,blogtext}).then((result)=>{
+    Blogs.create({title,snippet,blogtext,userid:req.user}).then((result)=>{
         res.redirect("/user/")
     }).catch(err=>{
         console.log(err)

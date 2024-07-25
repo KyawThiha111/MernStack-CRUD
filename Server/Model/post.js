@@ -1,6 +1,4 @@
 const {Schema, model} = require("mongoose");
-const { type } = require("os");
-
 const postSchema = new Schema({
     title: {
         type:String,
@@ -16,6 +14,11 @@ const postSchema = new Schema({
         type:String,
         required:true,
     },
+    userid:{
+        type: Schema.Types.ObjectId,
+        ref: "users",
+        required: true
+    }
 },{timestamps:true})
 
 module.exports = model("Posts",postSchema);
