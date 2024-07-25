@@ -4,6 +4,13 @@
 <body>
     <%- include("../Partials/nav")%>
     <h1 class="text-center">This is the main page</h1>
+
+    <% if(!login){%>
+      <a href="/login" class="btn btn-warning ">Login</a>
+      <%}%>
+    <% if(login){%>
+    <a href="" class="btn btn-warning">Logout</a>
+    <%}%>
     <h2>Your Posts <span><a href="/user/addpost">Add new post</a></span></h2>
     <%if(Blogs.length>0){%>
         <%Blogs.forEach(blog=>{%>

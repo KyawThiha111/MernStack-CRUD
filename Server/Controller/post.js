@@ -1,8 +1,10 @@
 const Blogs = require("../Model/post");
 
 exports.mainRoute = ((req,res)=>{
+    const login = req.get("Cookie").split("=")[1].trim()==="true";
+    console.log(login)
     Blogs.find().sort({createdAt: -1}).populate("userid","username").then(result=>{
-        res.render("main",{title:"Main Page", Blogs:result});
+        res.render("main",{title:"Main Page", Blogs:result,login});
         console.log(result)
     }).catch(err=>{
         console.log(err)

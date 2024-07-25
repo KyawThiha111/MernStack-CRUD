@@ -10,7 +10,7 @@ app.use(express.urlencoded({extended:true}));
 
 const userModel = require("./Model/user");
 const {userRoutes} = require("./Routes/user");
-
+const {authRoutes} = require("./Routes/auth");
 app.use((req,res,next)=>{
     userModel.findById("66a10e8806bcc00eecdff8a0").then(user=>{
        req.user = user;
@@ -18,7 +18,7 @@ app.use((req,res,next)=>{
     })  
 })
 app.use(userRoutes);
-
+app.use(authRoutes);
 app.use((req,res,next)=>{
     res.send("No page found");
 })
