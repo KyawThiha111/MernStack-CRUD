@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../../Partials/header")%>
+<body>
+    <%- include("../../Partials/nav")%>
+    <h1 class="text-center">This is the Sign Up page</h1>
+     <!-- Form -->
+     <form action="/signup" method="post" class="col-4 mx-auto">
+        <fieldset>
+          <div class="mb-3">
+            <label for="name" class="form-label">User Name:</label>
+            <input name="username" type="text" id="name" class="form-control border-black border-2" placeholder="User Name">
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input name="email" type="email" id="email" class="form-control border-black border-2" placeholder="Youe email">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password:</label>
+            <input name="password" type="password" id="password" class="form-control border-black border-2">
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Sing Up</button>
+        </fieldset>
+      </form>
+</body>
+</html>
