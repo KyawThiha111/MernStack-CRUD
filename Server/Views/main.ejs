@@ -9,21 +9,27 @@
       <a href="/login" class="btn btn-warning ">Login</a>
       <%}%>
     <% if(login){%>
-    <a href="" class="btn btn-warning">Logout</a>
+     <form action="/logout" method="post">
+      <button class="btn btn-warning">Logout</button>
+     </form>
     <%}%>
-    <h2>Your Posts <span><a href="/user/addpost">Add new post</a></span></h2>
-    <%if(Blogs.length>0){%>
-        <%Blogs.forEach(blog=>{%>
-           <div class="container-lg mx-auto">
-             <div class="col-6 mx-auto border-black border px-3 py-2">
-             <h3><%= blog.title%></h3>
-             <p class="lead"><%= blog.snippet%><span class="ms-2 h5">........</span></p>
-             <a href="/user/addpost/<%= blog.id%>">See More</a>
+
+    <% if(login){%>
+      <h2>Your Posts <span><a href="/user/addpost">Add new post</a></span></h2>
+      <%if(Blogs.length>0){%>
+          <%Blogs.forEach(blog=>{%>
+             <div class="container-lg mx-auto">
+               <div class="col-6 mx-auto border-black border px-3 py-2">
+               <h3><%= blog.title%></h3>
+               <p class="lead"><%= blog.snippet%><span class="ms-2 h5">........</span></p>
+               <a href="/user/addpost/<%= blog.id%>">See More</a>
+               </div>
              </div>
-           </div>
-        <%})%>
-    <%}else{%>
-         <div>No Posts</div>
+          <%})%>
+      <%}else{%>
+           <div>No Posts</div>
+      <%}%>
     <%}%>
+  
 </body>
 </html>

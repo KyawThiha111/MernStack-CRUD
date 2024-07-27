@@ -4,6 +4,15 @@ exports.getLoginRoute = ((req,res)=>{
 })
 
 exports.postLogin = ((req,res)=>{
-    res.setHeader("Set-Cookie","isLogin=true");
+    req.session.isLogin = true;
     res.redirect("/user/");
+})
+
+exports.postLogout = ((req,res)=>{
+    req.session.destroy((err)=>{
+        if(err){
+            return res.status(500).send('Failed to destroy session');
+        }
+        res.redirect("/user/");
+    })
 })
