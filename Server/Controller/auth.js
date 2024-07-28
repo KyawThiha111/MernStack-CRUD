@@ -31,29 +31,29 @@ exports.getLoginRoute = (req, res) => {
   res.render("Auth/login", { title: "Login" });
 };
 
-exports.postLogin = (req, res) => {
+exports.postLogin = async (req, res) => {
    const {username,email,password} = req.body;
-   userModel.findOne({username}).then(user=>{
-    if(user){
-        return bcryptjs.compare(password,user.password).then(isMatch=>{
-            if(isMatch){
-               req.session.isLogin = true
-               req.session.userInfo = user
-               req.session.save(err=>{
-                  console.log(err);
-                  return res.redirect("/user/")
-               })
-            }else{
-                return res.redirect("/login")
-            }
-        }).catch(err=>{
-            console.log(err)
-        })
-    }
+   const user = await userModel.findOne({username});
+   if(!user){
+     return res.redirect("/login")
+   }
+   const isMatch = await bcryptjs.compare(password,user.password);
+   if(!isMatch){
     return res.redirect("/login")
-   }).catch(err=>{
-    console.log(err)
-   })
+   }else{
+    req.session.isLogin = true
+    req.session.userInfo = user
+    req.session.save(err=>{
+        if(err){
+            console.log(err)
+            return
+        }
+        return res.redirect("/user/")
+    }).catch(err=>{
+        console.log(err)
+        return res.redirect("/login")
+    })
+   }
 };
 
 exports.postLogout = (req, res) => {
