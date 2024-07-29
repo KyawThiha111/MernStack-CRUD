@@ -7,6 +7,7 @@
      <!-- Form -->
      <form action="/login" method="post" class="col-4 mx-auto">
         <fieldset>
+          <input class="d-none" name="_csrf" value="<%= csrfToken%>">
           <div class="mb-3">
             <label for="name" class="form-label">User Name:</label>
             <input name="username" type="text" id="name" class="form-control border-black border-2" placeholder="User Name">

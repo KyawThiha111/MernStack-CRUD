@@ -8,7 +8,8 @@
      <form action="/user/addpost/edit/<%= post.id%>" method="post" class="col-4">
         <fieldset>
           <legend>Create a new blog.</legend>
-          <input value="<%=post.id%>" class="" name="id">
+          <input class="d-none" name="_csrf" value="<%= csrfToken%>">
+          <input value="<%=post.id%>" class="d-none" name="id">
           <div class="mb-3">
             <label for="title" class="form-label">Blog Title</label>
             <input value="<%=post.title%>" name="title" type="text" id="title" class="form-control border-black border-2" placeholder="What is the title of your blog?">
