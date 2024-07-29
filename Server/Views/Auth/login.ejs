@@ -20,7 +20,9 @@
             <label for="password" class="form-label">Password:</label>
             <input name="password" type="password" id="password" class="form-control border-black border-2">
           </div>
-          
+          <%if(errorMsg){%>
+            <p class="text-danger"><%= errorMsg%></p>
+            <%}%>
           <button type="submit" class="btn btn-primary">Login</button>
         </fieldset>
       </form>

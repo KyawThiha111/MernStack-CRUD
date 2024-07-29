@@ -8,6 +8,7 @@
       <form action="/user/addpost" method="post" class="col-4">
         <fieldset>
           <legend>Create a new blog.</legend>
+          <input class="d-none" name="_csrf" value="<%=csrfToken%>">
           <div class="mb-3">
             <label for="title" class="form-label">Blog Title</label>
             <input name="title" type="text" id="title" class="form-control border-black border-2" placeholder="What is the title of your blog?">
