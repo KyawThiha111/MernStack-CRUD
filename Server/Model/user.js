@@ -17,7 +17,7 @@ const userSchema = new Schema({
         type: String,
         minlength: 4,
         required: true,
-    }
+    },
 })
 
 module.exports = model("users",userSchema);
