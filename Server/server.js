@@ -33,12 +33,7 @@ app.use((req,res,next)=>{
      res.locals.csrfToken = req.csrfToken(); 
     next()
 })
-/* app.use((req,res,next)=>{
-    userModel.findById("66a10e8806bcc00eecdff8a0").then(user=>{
-       req.user = user;
-       next();
-    })  
-}) */
+
 app.use(userRoutes);
 app.use(authRoutes);
 app.use((req,res,next)=>{
@@ -48,16 +43,5 @@ app.use((req,res,next)=>{
 mongoose.connect(process.env.MONGO_URL).then((result)=>{
     app.listen(3003);
     console.log("Successfully connected to db");
-    
- /*    userModel.findOne().then(user=>{
-        if(!user){
-            return userModel.create({username:"User1",email:"user1@gmail.com",password:"user123"}).then(result=>{
-                console.log(result)
-            })
-        }
-        return user;
-    }).catch(err=>{
-        console.log(err)
-    }) */
 })
 

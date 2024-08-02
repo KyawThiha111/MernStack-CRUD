@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../../Partials/header")%>
+<body>
+    <%- include("../../Partials/nav")%>
+    <h1 class="text-center">Change Password with you email!</h1>
+     <!-- Form -->
+     <form action="/login/resetPassword" method="post" class="col-4 mx-auto">
+        <fieldset>
+          <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+          <input type="hidden" name="id" value="<%=user.id%>">
+          <input type="hidden" name="token" value="<%=user.token%>">
+          <input type="hidden" name="tokenExpiration" value="<%=user.tokenExpiration%>">
+          <div class="mb-3">
+            <input name="password" type="password" id="password" class="form-control border-black border-2" placeholder="New Password">
+          </div>
+          <div class="mb-3">
+            <input name="confirm_password" type="password" id="confirm_password" class="form-control border-black border-2" placeholder="Confirm your Password">
+          </div>
+          <p><%=message%></p>
+           <div><%=user.token%></div>
+            <button type="submit" class="btn btn-warning">Change</button> 
+        
+          </fieldset>
+      </form>
+</body>
+</html>

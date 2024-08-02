@@ -23,7 +23,10 @@
           <%if(errorMsg){%>
             <p class="text-danger"><%= errorMsg%></p>
             <%}%>
-          <button type="submit" class="btn btn-primary">Login</button>
+          <div class="d-flex justify-content-between align-items-center">
+            <a href="/login/changepassword">Forget Password?</a>
+            <button type="submit" class="btn btn-primary bg-white text-black border-none">Login</button>
+          </div>
         </fieldset>
       </form>
 </body>

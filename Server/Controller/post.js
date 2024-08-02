@@ -50,7 +50,7 @@ exports.showEachRoute = (req, res) => {
     });
 };
 
-exports.editPostRoute = (req, res) => {
+ exports.editPostRoute = (req, res) => {
   const id = req.params.id;
   Blogs.findById(id)
     .then((result) => {
@@ -60,8 +60,8 @@ exports.editPostRoute = (req, res) => {
       console.log(err);
     });
 };
-
-exports.editFormPost = (req, res) => {
+ 
+ exports.editFormPost = (req, res) => {
   const { title, snippet, blogtext, id } = req.body;
   Blogs.findByIdAndUpdate(id, { title, snippet, blogtext })
     .then((result) => {
@@ -71,6 +71,8 @@ exports.editFormPost = (req, res) => {
       console.log(err);
     });
 };
+ 
+
 
 exports.deletePost = (req, res) => {
   const id = req.params.id;
@@ -81,4 +83,4 @@ exports.deletePost = (req, res) => {
     .catch((err) => {
       console.log(err);
     });
-};
+}
